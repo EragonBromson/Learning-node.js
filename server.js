@@ -36,8 +36,8 @@ server.listen(8080);  //listen to connection on this port
 
 var mymodule1 = require('mymodule1');
 
-mymodule1.sayHello1();
-mymodule1.sayGoodBye1();
+mymodule1.sayHello();
+mymodule1.sayGoodBye();
 
 //EVENTEMITTERS
 
@@ -50,6 +50,13 @@ game.on('gameover', function(message) {
 });
 
 game.emit('gameover','You lose!');
+
+//Markdown
+var markdown = require('markdown').markdown;
+
+console.log(markdown.toHTML('A paragraph in **markdown**!'));
+
+// Event 'close'
 
 // var callbackfunction = function(){
 //   console.log("Goodbye.");
