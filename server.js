@@ -24,9 +24,17 @@ var server = http.createServer(function(request,response) {
     }
     if('firstname' in parameters && 'secondname' in parameters && response.statusCode != '404'){
       response.write( "parameters are : \nfirstname = " + parameters['firstname']+
-      "\nsecondname = " + parameters['secondname'] + "\n" );
+      "\nsecondname = " + parameters['secondname'] + '\n');
 
     }
-    response.end("This is the end.");
+    response.write("\n");
+    response.end("\nThis is the end.");
   });
 server.listen(8080);  //listen to connection on this port
+
+var callbackfunction = function(){
+  console.log("Goodbye.");
+};
+
+server.on('close', callbackfunction);
+server.close();
