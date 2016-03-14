@@ -1,8 +1,8 @@
-var http = require('http');
+var http = require('http'); //calls for http.js
 var url = require('url');
 var querystring = require('querystring');
 
-var server = http.createServer(function(request,response) {
+var server = http.createServer(function(request,response) {     //This is 'request' type of event.
 
     var page = url.parse(request.url).pathname;
     console.log(page);
@@ -32,9 +32,28 @@ var server = http.createServer(function(request,response) {
   });
 server.listen(8080);  //listen to connection on this port
 
-var callbackfunction = function(){
-  console.log("Goodbye.");
-};
+// Calling functions from modules
 
-server.on('close', callbackfunction);
-server.close();
+var mymodule1 = require('mymodule1');
+
+mymodule1.sayHello1();
+mymodule1.sayGoodBye1();
+
+//EVENTEMITTERS
+
+var EventEmitter = require('events').EventEmitter;
+
+var game = new EventEmitter();
+
+game.on('gameover', function(message) {
+  console.log(message);
+});
+
+game.emit('gameover','You lose!');
+
+// var callbackfunction = function(){
+//   console.log("Goodbye.");
+// };
+
+// server.on('close', callbackfunction);
+// server.close();
