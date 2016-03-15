@@ -9,8 +9,15 @@ app.get('/', function(request, response) {
 });
 
 app.get('/floor/:floornum/bedroom', function(request, response) {
-    response.setHeader('Content-Type', 'text/plain');
-    response.end('You are in the bedroom on floor number ' + request.params.floornum);
+    // response.setHeader('Content-Type', 'text/plain');
+    // response.end('You are in the bedroom on floor number ' + request.params.floornum);
+    response.render('template1.ejs', {floor: request.params.floornum});
+});
+
+//Loops
+app.get('/count/:number', function(request,response){
+  var names = ['Sarthak','Custom1','Custom2'];
+  response.render('countNumbers.ejs', {counter: request.params.number, names:names});
 });
 
 //FOR ALL THE PAGES THAT DONT EXIST THIS PIECE OF CODE IS REQUIRED

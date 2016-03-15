@@ -1,0 +1,13 @@
+<p> counting to be done till <%= counter %> . </p>
+
+<p><%
+  for(var i=1;i<=counter;i++){
+  %>
+
+  <%= i %><br>
+
+  <% } %>
+</p>
+<p> Taking a random name from the array:
+  <%= names[Math.round( Math.random() * (names.length - 1) )] %>
+</p>
